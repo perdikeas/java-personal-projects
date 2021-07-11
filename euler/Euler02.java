@@ -12,7 +12,29 @@
 
 public class Euler02 {
     public static void main(String[] args) {
+        final int answer1 = solution1();
+        final int answer2 = solution2();
+        if (answer1==answer2)
+            System.out.printf("the answer is [%d]\n", answer1);
+        else
+            System.out.printf("ERROR! I got two different answers: %d and %d\n", answer1, answer2);
+    }
 
+    private static int solution1() {
+        final int LIMIT = 4*1000*1000;
+        int sum = 0;
+        int i = 1;
+        int fibvalue = fib(i);
+        while (fibvalue <= LIMIT) {
+            if (fibvalue %2 == 0)
+                sum += fibvalue;
+            i++;
+            fibvalue = fib(i);
+        }
+        return sum;
+    }
+
+    private static int solution2() {
         final int LIMIT = 4*1000*1000;
         int sum = 0;
         for (int i = 1; fib(i)<=LIMIT; i++) {
@@ -20,8 +42,7 @@ public class Euler02 {
             if (fibvalue % 2 == 0)
                 sum += fibvalue;
         }
-        System.out.printf("%d\n", sum);
-
+        return sum;
     }
 
     static int fib(int n) {
